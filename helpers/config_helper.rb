@@ -3,36 +3,61 @@ require 'rspec'
 require 'capybara'
 require 'capybara/dsl'
 require 'spreadsheet'
+require 'browserstack/local'
 
 
 include Capybara::DSL
 include RSpec::Matchers
 
 Capybara.configure do |config|
- config.default_driver = :selenium
  config.default_selector = :css
- config.app_host = 'https://www.flipkart.com/'
  config.default_max_wait_time = 10
 end
 
+USER_NAME = ENV['BROWSERSTACK_USERNAME']
+ACCESS_KEY = ENV['BROWSERSTACK_ACCESS_KEY']
+# Browser_version = ENV['Browser_version']
+# ACCESS_KEY = ENV['BROWSERSTACK_ACCESS_KEY']
+# ACCESS_KEY = ENV['BROWSERSTACK_ACCESS_KEY']
+# ACCESS_KEY = ENV['BROWSERSTACK_ACCESS_KEY']
 
 
-def setup_driver browser
+def run_session_remote
+	url = "https://#{USER_NAME}:#{ACCESS_KEY}@hub-cloud.browserstack.com/wd/hub"
+	p url
+	capabilities = Selenium::WebDriver::Remote::Capabilities.new
+	capabilities['browser_version'] = '120.0'
+	capabilities['browser'] = 'Chrome'
+	capabilities['os'] = "Windows"
+	capabilities['os_version'] = '10'
+	capabilities['name'] = "name"
+	capabilities['build'] = "build"
+	capabilities['javascriptEnabled'] = 'true'
+  	Capybara.default_driver = :browserstack
+	Capybara.register_driver :browserstack do |app|
+		Capybara::Selenium::Driver.new(app, :browser => :remote,
+		:url => url,
+		:options => capabilities)	
+	end
+end
+
+def setup_local_driver browser
 	client = Selenium::WebDriver::Remote::Http::Default.new
 	client.read_timeout = 600 # instead of the default 60
-    case browser.downcase
+    case browser
 	when "firefox"
 		Capybara.default_driver = :selenium
 		Capybara.register_driver :selenium do |app|
 			Capybara::Selenium::Driver.new(app, :browser => :firefox,  http_client: client)
 		end
     when "chrome"
+		Capybara.default_driver = :chrome
 		Capybara.register_driver :chrome do |app|
 			chromeoptions = Selenium::WebDriver::Chrome::Options.new
 			chromeoptions.add_argument('start-maximized')
 			chromeoptions.add_argument('disable-infobars')
 			chromeoptions.add_argument('excludeSwitches')
-			Capybara::Selenium::Driver.new(app, :browser => :chrome, capabilities: chromeoptions,  http_client: client)
+			Capybara::Selenium::Driver.new(app, :browser => :chrome, options: chromeoptions,  http_client: client)
 		end
   
     when  "ie"
@@ -59,9 +84,9 @@ def setup_driver browser
 end
 
 RSpec.configure do |config|
-	config.before(:each) do
-		setup_driver 'chrome'
-	end
+	p "inside"
+	# setup_local_driver 'chrome'
+	run_session_remote
 	
 	config.around(:example) do |example|
 		begin
