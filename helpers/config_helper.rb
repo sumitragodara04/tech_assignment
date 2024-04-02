@@ -26,12 +26,12 @@ def run_session_remote
 	url = "https://#{USER_NAME}:#{ACCESS_KEY}@hub-cloud.browserstack.com/wd/hub"
 	p url
 	capabilities = Selenium::WebDriver::Remote::Capabilities.new
-	capabilities['browser_version'] = '120.0'
-	capabilities['browser'] = 'Chrome'
-	capabilities['os'] = "Windows"
-	capabilities['os_version'] = '10'
-	capabilities['name'] = "name"
-	capabilities['build'] = "build"
+	capabilities['browser_version'] = ENV['BROWSER_VERSION']
+	capabilities['browser'] = ENV['BROWSER']
+	capabilities['os'] = ENV['OS']
+	capabilities['os_version'] = ENV['OS_VERSION']
+	capabilities['name'] = "browser_stack_assignment_1"
+	capabilities['build'] = ENV["BUILD_NAME"]
 	capabilities['javascriptEnabled'] = 'true'
   	Capybara.default_driver = :browserstack
 	Capybara.register_driver :browserstack do |app|
