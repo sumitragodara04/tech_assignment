@@ -25,7 +25,8 @@ $flipkart_product_price_text = "(//div[@class='_30jeq3 _1_WHN1'])[?]"
 	def self.select_brand brand
 		obj_locator = $flipkart_select_brand_checkbox.sub('?',brand)
 		return_element(obj_locator).click
-		com_scroll_till_element $flipkart_flipkart_assured_checkbox
+		#com_scroll_till_element $flipkart_flipkart_assured_checkbox
+		sleep 2
 		return_element($flipkart_flipkart_assured_checkbox).click
 	end
 	

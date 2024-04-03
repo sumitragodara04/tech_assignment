@@ -5,3 +5,7 @@ gem 'selenium-webdriver'
 gem 'rspec'
 gem 'spreadsheet'
 gem 'browserstack-local'
+gem "rake"
+gem "parallel"
+gem 'yaml'
+gem 'parallel_tests'
