@@ -5,6 +5,13 @@ require 'thread'
 require 'yaml'
 
 ENV["TASK_ID"] = '0'
+RSpec::Core::RakeTask.new(:localsystem) do |t|
+  ENV['CONFIG_NAME'] = "localsystem"
+  t.pattern = Dir.glob('spec/Test_Script.rb')
+  t.rspec_opts = '--format documentation'
+  t.verbose = false
+end
+
 RSpec::Core::RakeTask.new(:single) do |t|
   ENV['CONFIG_NAME'] ||= "single"
   t.pattern = Dir.glob('spec/Test_Script.rb')
@@ -35,6 +42,11 @@ task :parallel do
 	end
 	thread.each(&:join)
 	
+end
+
+task :runTest do |t, args|
+  Rake::Task["localsystem"].invoke
+  Rake::Task["localsystem"].reenable
 end
 task :test do |t, args|
   Rake::Task["single"].invoke
