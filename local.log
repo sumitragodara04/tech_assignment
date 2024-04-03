@@ -1,0 +1,24 @@
+ECHO is on.
+
+Wed Apr 03 2024 13:37:45:880 GMT+0530 (India Standard Time) -- [INFO] Started the BrowserStack Binary server on 45691, PID: 9716
+Wed Apr 03 2024 13:37:46:83 GMT+0530 (India Standard Time) -- [SUCCESS] You can now access your local server(s) in our remote browser
+
+Wed Apr 03 2024 13:37:46:172 GMT+0530 (India Standard Time) -- Press Ctrl-C to exit
+
+
+Wed Apr 03 2024 13:37:46:710 GMT+0530 (India Standard Time) -- Starting configuration console on http://localhost:45454
+
+Wed Apr 03 2024 13:39:01:383 GMT+0530 (India Standard Time) -- [ERROR] Another instance of BrowserStack Binary is running with on your system with PID: 9716
+Wed Apr 03 2024 13:39:01:383 GMT+0530 (India Standard Time) -- [ERROR] Please close it and try again
+Wed Apr 03 2024 13:39:01:383 GMT+0530 (India Standard Time) -- [ERROR] SYS_CONFLICT:1001 https://browserstack.com/docs/local-testing/binary/errors/1001
+Wed Apr 03 2024 13:39:01:384 GMT+0530 (India Standard Time) -- You can learn more about BrowserStack Binary flags by running BrowserStackLocal.exe --help
+
+Wed Apr 03 2024 13:57:23:610 GMT+0530 (India Standard Time) -- [ERROR] Another instance of BrowserStack Binary is running with on your system with PID: 9716
+Wed Apr 03 2024 13:57:23:610 GMT+0530 (India Standard Time) -- [ERROR] Please close it and try again
+Wed Apr 03 2024 13:57:23:610 GMT+0530 (India Standard Time) -- [ERROR] SYS_CONFLICT:1001 https://browserstack.com/docs/local-testing/binary/errors/1001
+Wed Apr 03 2024 13:57:23:611 GMT+0530 (India Standard Time) -- You can learn more about BrowserStack Binary flags by running BrowserStackLocal.exe --help
+
+Wed Apr 03 2024 13:59:41:672 GMT+0530 (India Standard Time) -- [ERROR] Another instance of BrowserStack Binary is running with on your system with PID: 9716
+Wed Apr 03 2024 13:59:41:672 GMT+0530 (India Standard Time) -- [ERROR] Please close it and try again
+Wed Apr 03 2024 13:59:41:672 GMT+0530 (India Standard Time) -- [ERROR] SYS_CONFLICT:1001 https://browserstack.com/docs/local-testing/binary/errors/1001
+Wed Apr 03 2024 13:59:41:672 GMT+0530 (India Standard Time) -- You can learn more about BrowserStack Binary flags by running BrowserStackLocal.exe --help
